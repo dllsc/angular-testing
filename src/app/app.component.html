@@ -1,0 +1,76 @@
+<input type="text" [(ngModel)]="title" (keyup.enter)="addTask()">
+
+
+<div [ngSwitch]="buttonSwich">
+
+  <div *ngSwitchCase="'END'">
+    <div *ngFor="let task of tasks.name" >
+      <div *ngIf="tasks.status[tasks.name.indexOf(task)] == true">
+        <button type="button" (click)="endTask(task)">End</button>
+        {{task}}
+        <button type="button" (click)="deleteTask(task)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchCase="'NOTEND'">
+    <div *ngFor="let task of tasks.name" >
+      <div *ngIf="tasks.status[tasks.name.indexOf(task)] == false">
+        <button type="button" (click)="endTask(task)">End</button>
+        {{task}}
+        <button type="button" (click)="deleteTask(task)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngSwitchDefault>
+    <div *ngFor="let task of tasks.name" >
+        <button type="button" (click)="endTask(task)">End</button>
+        {{task}}
+        <button type="button" (click)="deleteTask(task)">Delete</button>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div>
+  <button type="button" (click)="buttonSwich = 'ALL'">ALL</button>
+  <button type="button" (click)="buttonSwich = 'END'">COMPLITED</button>
+  <button type="button" (click)="buttonSwich = 'NOTEND'">ACTIVE</button>
+</div>
+
+<div>Осталось выполнить задач: {{valueTask}}</div>
+
+
+
+
+
+
+
+<!--<div *ngIf="bool">Pidr</div>-->
+<!--<div id = "tasks" [ngSwitch]="title">-->
+<!--  <div *ngSwitchCase="'Andy'">the best</div>-->
+<!--  <div *ngSwitchCase="'Danik'">the pidarasil andy</div>-->
+<!--  <div *ngSwitchDefault>all dauni</div>-->
+<!--</div>-->
+<!--<button type="button" (click)="addTask()">Add name</button>-->
+
+<!--<div class = "tasks"></div>-->
+
+
+<!--<div class = "task">-->
+<!--  <button class = "delete" type="button" (click)="addTask()">Delete</button>-->
+<!--</div>-->
+
+
+
+
+<!--<div _ngcontent-fkw-c50="" id="tasks" ng-reflect-ng-switch="Danik"> Ebat &lt;!&ndash;bindings={-->
+<!--  "ng-reflect-ng-switch-case": "Andy"-->
+<!--}&ndash;&gt;<div _ngcontent-fkw-c50="">the pidarasil andy</div>&lt;!&ndash;bindings={-->
+<!--  "ng-reflect-ng-switch-case": "Danik"-->
+<!--}&ndash;&gt;&lt;!&ndash;container&ndash;&gt;<div>Danik</div><div>Danik</div></div>-->
+
